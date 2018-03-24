@@ -23,8 +23,8 @@ void setup()
   pixels.setBrightness(190);
   lastTime = millis();
   seconds = 0; 
-  minutes = 4; 
-  hours = 4; 
+  minutes = 45; 
+  hours = 3; 
 }
 
 void loop() 
@@ -60,16 +60,25 @@ void loop()
 
 void setLeds()
 {
-  int minuteLed = (seconds / 5) * 2;
+  int secondLed = seconds*2 / 5;
+  int minuteLed = minutes*2 / 5;
+  int hourLed = hours*2; 
   for (int i=0; i<NUMPIXELS; i++)
   {
-    if (i==minuteLed)
+    //set second
+    if (i==secondLed)
     {
       pixels.setPixelColor(i, 255, 0, 255);
+    } else if(i==minuteLed)
+    {
+        pixels.setPixelColor(i, 0, 23, 255);     
+    } else if (i== hourLed)
+    {
+      pixels.setPixelColor(i, 255, 23, 0);
     } else
     {
-      pixels.setPixelColor(i, 1, 3, 5);
-    }
+       pixels.setPixelColor(i, 1, 3, 5);
+    } 
   }
   pixels.show();
 }
