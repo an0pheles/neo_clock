@@ -4,7 +4,7 @@
 #include <avr/power.h>
 #endif
 
-#define PIN            4
+#define PIN            0
 #define NUMPIXELS      24
 
 // When we setup the NeoPixel library, we tell it how many pixels, and which pin to use to send signals.
@@ -23,7 +23,7 @@ void setup()
   pixels.setBrightness(190);
   lastTime = millis();
   seconds = 0; 
-  minutes = 45; 
+  minutes = 30; 
   hours = 3; 
 }
 
@@ -32,13 +32,13 @@ void loop()
   int currentTime = millis();
   if (currentTime - lastTime > 1000)
   {
-    if (seconds == 60)
+    if (seconds == 59)
     {
       seconds = 0;
-      if (minutes == 60)
+      if (minutes == 59)
       {
         minutes = 0;
-        if (hours == 12)
+        if (hours == 11)
         {
           hours = 0;
         } else 
